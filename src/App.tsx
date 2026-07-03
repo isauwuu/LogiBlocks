@@ -1,19 +1,49 @@
-import Canvas from './components/Canvas';
-import CodeViewer from './components/CodeViewer';
-import Console from './components/Console';
-import LeftPanel from './components/LeftPanel';
-import RightPanel from './components/RightPanel';
+import { useState } from 'react';
 import Toolbox from './components/Toolbox';
+import LeftPanel from './components/LeftPanel';
+import Canvas from './components/Canvas';
+import RightPanel from './components/RightPanel';
+import './App.css';
 
-export default function App() {
-    return (
-        <div>
-            <Toolbox />
-            <LeftPanel />
-            <Canvas />
-            <RightPanel />
-            <Console />
-            <CodeViewer code=""/>
+function App() {
+  const [leftOpen, setLeftOpen] = useState(true);
+  const [rightOpen, setRightOpen] = useState(true);
+
+  return (
+    <div className="app-layout">
+      <div className="toolbox-row">
+        <Toolbox />
+      </div>
+
+      <div className="main-row">
+        <div className={`left-panel ${leftOpen ? '' : 'collapsed'}`}>
+          <LeftPanel />
         </div>
-    );
+
+        <div className="canvas-area">
+          <button
+            className="toggle-btn toggle-left"
+            onClick={() => setLeftOpen(!leftOpen)}
+          >
+            {leftOpen ? '⟨' : '⟩'}
+          </button>
+
+          <Canvas />
+
+          <button
+            className="toggle-btn toggle-right"
+            onClick={() => setRightOpen(!rightOpen)}
+          >
+            {rightOpen ? '⟩' : '⟨'}
+          </button>
+        </div>
+
+        <div className={`right-panel ${rightOpen ? '' : 'collapsed'}`}>
+          <RightPanel />
+        </div>
+      </div>
+    </div>
+  );
 }
+
+export default App;

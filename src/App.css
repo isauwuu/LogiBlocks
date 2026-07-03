@@ -1,0 +1,53 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.toolbox-row {
+  flex-shrink: 0;
+  height: 50px;
+  width: 100%;
+  border-bottom: 1px solid #333;
+}
+
+.main-row {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.left-panel,
+.right-panel {
+  width: 25%;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: width 0.2s ease;
+}
+
+.left-panel.collapsed,
+.right-panel.collapsed {
+  width: 0;
+}
+
+.canvas-area {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+}
+
+.toggle-btn {
+  position: absolute;
+  top: 8px;
+  z-index: 10;
+}
+
+.toggle-left { left: 8px; }
+.toggle-right { right: 8px; }
