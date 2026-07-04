@@ -8,24 +8,24 @@ interface NodeBase {
   tipo: TipoBloque;
 }
 //2. Declaracion de todos los nodos de forma individual
-type InputNode = NodeBase & {
+export type InputNode = NodeBase & {
   variable: string;
 }
 
-type OutputNode = NodeBase & {
+export type OutputNode = NodeBase & {
   salida: string;
 }
 
-type AssignNode= NodeBase & {
+export type AssignNode= NodeBase & {
   variable: string;
   expresion: string;
 }
 
-type WhileNode = NodeBase & {
+export type WhileNode = NodeBase & {
   condicion: string;
   cuerpo: Nodo[];
 }
-type ForNode = NodeBase & {
+export type ForNode = NodeBase & {
   indice: string;
   inicio: string;
   paso: number;
@@ -33,7 +33,7 @@ type ForNode = NodeBase & {
   cuerpo: Nodo[];
 }
 
-type IfNode = NodeBase & {
+export type IfNode = NodeBase & {
   condicion: string;
   verdadero: Nodo[];
   falso?: Nodo[];
@@ -55,8 +55,7 @@ type LitNode = NodeBase & {
 // export type NodoExpresion = ExprNode | VarNode | LitNode;
 
 //4. Union para el armado del AST
-export type Nodo = InputNode | OutputNode | AssignNode | WhileNode | ForNode | IfNode; //| NodoExpresion;
-
+export type Nodo = InputNode | OutputNode | AssignNode | WhileNode | ForNode | IfNode;
 
 //5. Acople con React Flow
 export type CustomNodo = Node & Nodo;
