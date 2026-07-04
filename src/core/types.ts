@@ -18,11 +18,11 @@ type OutputNode = NodeBase & {
 
 type AssignNode= NodeBase & {
   variable: string;
-  expresion: NodoExpresion;
+  expresion: string;
 }
 
 type WhileNode = NodeBase & {
-  condicion: NodoExpresion;
+  condicion: string;
   cuerpo: Nodo[];
 }
 type ForNode = NodeBase & {
@@ -34,11 +34,11 @@ type ForNode = NodeBase & {
 }
 
 type IfNode = NodeBase & {
-  condicion: NodoExpresion;
+  condicion: string;
   verdadero: Nodo[];
   falso?: Nodo[];
 }
-
+/* Esta parte se hara mas adelante para validar las expresiones dentro de los bloques, ahora usaremos la expresion tal cual entra
 type ExprNode = NodeBase & {
   operando1 : NodoExpresion;
   operando2 : NodoExpresion;
@@ -50,12 +50,12 @@ type VarNode = NodeBase & {
 type LitNode = NodeBase & {
   valor: string | number;
 }
-
+*/
 //3. Union para el evaluado de expresiones
-export type NodoExpresion = ExprNode | VarNode | LitNode;
+// export type NodoExpresion = ExprNode | VarNode | LitNode;
 
 //4. Union para el armado del AST
-export type Nodo = InputNode | OutputNode | AssignNode | WhileNode | ForNode | IfNode | NodoExpresion;
+export type Nodo = InputNode | OutputNode | AssignNode | WhileNode | ForNode | IfNode; //| NodoExpresion;
 
 
 //5. Acople con React Flow
