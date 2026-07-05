@@ -1,5 +1,5 @@
-import CodeViewer from './CodeViewer';
-import Console from './Console';
+import CodeViewer from './codeViewer/CodeViewer';
+import Console from './console/Console';
 
 export default function RightPanel() {
   return (

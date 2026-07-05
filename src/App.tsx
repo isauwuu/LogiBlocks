@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import Toolbox from './components/Toolbox';
-import LeftPanel from './components/LeftPanel';
-import Canvas from './components/Canvas';
-import RightPanel from './components/RightPanel';
+import Toolbox from './components/editor/tolbox/Toolbox';
+import LeftPanel from './components/editor/leftPanel/LeftPanel';
+import Canvas from './components/editor/canvas/Canvas';
+import RightPanel from './components/editor/rightPanel/RightPanel';
 import './App.css';
 
 function App() {
