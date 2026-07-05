@@ -4,7 +4,7 @@ import type { ILanguage } from './ILanguage';
 export class JSLanguage implements ILanguage {
 
 
-  translate(Ast: T.Nodo[]): string {
+  translate(Ast: T.AstNodo[]): string {
     let codigo: string = "";
 
     for(const nodo of Ast){
@@ -12,7 +12,7 @@ export class JSLanguage implements ILanguage {
       switch(nodo.tipo){
 
         case "input":
-          const nodoInput = nodo as T.InputNode;
+          const nodoInput = nodo as T.AstInputNode;
           codigo += `let ${nodoInput.variable} = prompt("Ingrese ${nodoInput.variable}:");\n`;
           break;
 

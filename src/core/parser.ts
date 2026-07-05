@@ -1,5 +1,5 @@
-import type { CustomNodo, CustomEdge, Nodo } from './types';
+import type { VisualDiagramData, AstNodo } from './types';
 
-export function parseNodesToAST(_nodes: CustomNodo[], _edges: CustomEdge[]): Nodo[] {
+export function parseNodesToAST(_diagram: VisualDiagramData): AstNodo[] {
   return [];
 }

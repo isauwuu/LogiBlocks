@@ -1,67 +1,87 @@
 import { Node, Edge } from '@xyflow/react';
 
-//1. Declaracion de la estructura base de un nodo
-type TipoBloque = "input"|"output"|"while"|"for"|"assign"|"if"|"expr"|"var"|"lit";
+// ============================================================================
+// 1. MUNDO AST SEMÁNTICO
+// ============================================================================
+type TipoAstBloque = "input"|"output"|"while"|"for"|"assign"|"if"|"expr"|"var"|"lit";
 
-interface NodeBase {
+interface AstNodeBase {
   id: string;
-  tipo: TipoBloque;
+  tipo: TipoAstBloque;
 }
-//2. Declaracion de todos los nodos de forma individual
-export type InputNode = NodeBase & {
+//1.2. Declaracion de todos los nodos de forma individual
+export type AstInputNode = AstNodeBase & {
   variable: string;
 }
 
-export type OutputNode = NodeBase & {
+export type AstOutputNode = AstNodeBase & {
   salida: string;
 }
 
-export type AssignNode= NodeBase & {
+export type AstAssignNode= AstNodeBase & {
   variable: string;
   expresion: string;
 }
 
-export type WhileNode = NodeBase & {
+export type AstWhileNode = AstNodeBase & {
   condicion: string;
-  cuerpo: Nodo[];
+  cuerpo: AstNodo[];
 }
-export type ForNode = NodeBase & {
+export type AstForNode = AstNodeBase & {
   indice: string;
   inicio: string;
   paso: number;
   fin: string;
-  cuerpo: Nodo[];
+  cuerpo: AstNodo[];
 }
 
-export type IfNode = NodeBase & {
+export type AstIfNode = AstNodeBase & {
   condicion: string;
-  verdadero: Nodo[];
-  falso?: Nodo[];
+  verdadero: AstNodo[];
+  falso?: AstNodo[];
 }
 /* Esta parte se hara mas adelante para validar las expresiones dentro de los bloques, ahora usaremos la expresion tal cual entra
-type ExprNode = NodeBase & {
-  operando1 : NodoExpresion;
-  operando2 : NodoExpresion;
+type AstExprNode = AstNodeBase & {
+  operando1 : AstNodoExpresion;
+  operando2 : AstNodoExpresion;
   operador : '+' | '-' | '*' | '/' | '<>' | '==' | '<' | '>';
 }
-type VarNode = NodeBase & {
+type AstVarNode = AstNodeBase & {
   variable: string;
 }
-type LitNode = NodeBase & {
+type AstLitNode = AstNodeBase & {
   valor: string | number;
 }
 */
-//3. Union para el evaluado de expresiones
+//1.3. Union para el evaluado de expresiones
 // export type NodoExpresion = ExprNode | VarNode | LitNode;
 
-//4. Union para el armado del AST
-export type Nodo = InputNode | OutputNode | AssignNode | WhileNode | ForNode | IfNode;
+//1.4. Union para el armado del AST
+export type AstNodo = AstInputNode | AstOutputNode | AstAssignNode | AstWhileNode | AstForNode | AstIfNode;
 
-//5. Acople con React Flow
-export type CustomNodo = Node & Nodo;
-export type CustomEdge = Edge;
 
-export interface ProjectData {
-  nodes : CustomNodo[];
-  edges : CustomEdge[];
+
+// ============================================================================
+// 2. MUNDO VISUAL / CANVAS
+// ============================================================================
+
+export type VisualBlockNode = Node & {
+  id: string;
+  tipo: TipoAstBloque;
+  variable?: string;      //para entradas o asignaciones
+  salida?: string;        //expresiones de salidas
+  expresionStr?: string;  //expresiones en asignaciones
+  condicionStr?: string;  //condiciones en if y while
+
+  //campos para el for
+
+  indice?: string;
+  inicioStr?: string;
+  finStr?: string;
+  pasoStr?: string;
+};
+
+export interface VisualDiagramData {
+  nodes: VisualBlockNode[];
+  edges: Edge[];
 }
