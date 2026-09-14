@@ -1,21 +1,24 @@
-# DGS
+# LogiBlocks
 
 > Construí tu lógica de programación bloque a bloque, de forma visual y práctica.
 
-DGS es una herramienta web didáctica pensada para la facultad. Los alumnos construyen algoritmos conectando bloques en un lienzo visual y, en tiempo real, ven el código C equivalente generado automáticamente. También pueden ejecutar el algoritmo directamente en el navegador, sin instalar nada.
+LogiBlocks es una herramienta web didáctica pensada para la facultad. Los alumnos construyen algoritmos conectando bloques en un lienzo visual y, en tiempo real, ven el código C equivalente generado automáticamente. También pueden ejecutar el algoritmo directamente en el navegador, sin instalar nada.
 
 ---
 
 ## Cómo funciona
+
 La interfaz tiene dos paneles: el lienzo a la izquierda y el código C a la derecha. Mientras el alumno conecta bloques, el código se actualiza solo. Al hacer clic en "Ejecutar", el algoritmo corre en una consola simulada dentro de la misma página.
 
 El sistema traduce el diagrama en dos pasos:
+
 1. **El parser** convierte los nodos y conexiones del lienzo en un AST (árbol de sintaxis abstracta) en TypeScript.
 2. **Los traductores** recorren ese árbol y generan código: uno produce C (para mostrar), el otro produce JavaScript (para ejecutar en el navegador de forma segura).
 
 ---
 
 ## Los 6 bloques
+
 Con estos bloques se puede representar cualquier algoritmo básico:
 
 | Bloque | Qué hace |
@@ -30,15 +33,17 @@ Con estos bloques se puede representar cualquier algoritmo básico:
 ---
 
 ## Stack
-* **React + TypeScript + Vite** — base del proyecto
-* **@xyflow/react** — lienzo drag-and-drop con nodos y conexiones
-* **@monaco-editor/react** — panel de código con resaltado de sintaxis C
-* **js-interpreter** — intérprete JS sandboxed para ejecutar en el navegador
-* **lz-string** — compresión de diagramas en la URL para compartir sin registro
+
+- **React + TypeScript + Vite** — base del proyecto
+- **@xyflow/react** — lienzo drag-and-drop con nodos y conexiones
+- **@monaco-editor/react** — panel de código con resaltado de sintaxis C
+- **js-interpreter** — intérprete JS sandboxed para ejecutar en el navegador
+- **lz-string** — compresión de diagramas en la URL para compartir sin registro
 
 ---
 
 ## Estructura del proyecto
+
 ```
 src/
 ├── components/
@@ -73,18 +78,20 @@ src/
 ---
 
 ## Cómo correrlo localmente
-### Requisitos: Node.js v18+
+
+**Requisitos:** Node.js v18+
 
 ```bash
-git clone git@github.com:rchgst/DGS.git
-cd DGS
+git clone https://github.com/isauwuu/LogiBlocks.git
+cd LogiBlocks
 pnpm install
 pnpm dev
 ```
-La app queda disponible en `http://localhost:5173`.
+
+La app queda disponible en `jaja not yet`.
 
 ---
 
 ## Compartir diagramas
-No hay cuentas ni guardado en servidor. Cuando el alumno hace clic en "Compartir", el diagrama se comprime con `lz-string` y se codifica directo en la URL. Quien recibe el link ve el diagrama cargado automáticamente.
 
+No hay cuentas ni guardado en servidor. Cuando el alumno hace clic en "Compartir", el diagrama se comprime con `lz-string` y se codifica directo en la URL. Quien recibe el link ve el diagrama cargado automáticamente.
