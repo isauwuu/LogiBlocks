@@ -1,5 +1,5 @@
-import type { Block } from '../types';
+import type { AstNodo } from '../types';
 
 export interface ILanguage {
-  translate(blocks: Block[]): string;
+  translate(blocks: AstNodo[]): string;
 }

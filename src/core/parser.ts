@@ -1,5 +1,5 @@
-import type { Block } from './types';
+import type { VisualDiagramData, AstNodo } from './types';
 
-export function parseNodesToAST(_nodes: any[], _edges: any[]): Block[] {
+export function parseNodesToAST(_diagram: VisualDiagramData): AstNodo[] {
   return [];
 }

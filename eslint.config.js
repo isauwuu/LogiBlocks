@@ -20,6 +20,7 @@ export default defineConfig([
       parser: tseslint.parser,
     },
     rules: {
+      'no-case-declarations': 'off',
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
